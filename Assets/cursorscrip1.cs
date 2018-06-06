@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class cursorscrip1:MonoBehaviour
 {
-    public GameObject m_cam;
-    public Rigidbody m_body;
+    /*-- externals --*/
+    public GameObject m_cam; //maincam
+    public Rigidbody m_body; //self
 
-    public Transform m_gridthing;
+    public Transform m_gridthing; //the blue grid square, to be replaced!!!
 
     /*-- movement vars --*/
     Vector3 m_moveVec=new Vector3();
@@ -15,11 +17,15 @@ public class cursorscrip1:MonoBehaviour
     float m_cursorspeed=7.6f;
 
     /*-- grid float vars, might deprecate later --*/
-    Vector3 m_centrepos=new Vector3();
-    float[] m_pos=new float[2]{0,0};
+    public Vector3 m_centrepos=new Vector3(); //current grid square coordiante's centre
+    public float[] m_pos=new float[2]{0,0}; //current grid square coordinate
 
     float m_tileSize=1.12f;
     float m_tileSizehalf;
+
+    /*-- selection system --*/
+    bool m_selectActive=false;
+    Action m_currentSelectCommand;
 
     void Start()
     {
@@ -39,6 +45,11 @@ public class cursorscrip1:MonoBehaviour
 
         updatePosition();
         calcPos();
+
+        // if (Input.GetButtonDown("selectkey") && m_selectActive)
+        // {
+        //     selectRequest();
+        // }
     }
 
     void updatePosition()
@@ -94,5 +105,24 @@ public class cursorscrip1:MonoBehaviour
 
             m_gridthing.position=m_centrepos;
         }
+    }
+
+    //request the cursor go into select mode. give it the function that
+    //will be executed on valid selection.
+    public void enterSelectMode(Action command)
+    {
+        m_selectActive=true;
+        m_currentSelectCommand=command;
+    }
+
+    //attempt to perform the current queued select command, after doing checks
+    void selectRequest()
+    {
+        //once tile system is implemented, do checks to see if
+        //the tile is actually selectable before activating the callback
+
+        m_currentSelectCommand();
+        m_currentSelectCommand=null;
+        m_selectActive=false;
     }
 }
