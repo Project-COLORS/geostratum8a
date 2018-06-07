@@ -18,6 +18,7 @@ public class cursorscrip1:MonoBehaviour
 
     /*-- grid float vars, might deprecate later --*/
     public Vector3 m_centrepos=new Vector3(); //current grid square coordiante's centre
+    [NonSerialized]
     public float[] m_pos=new float[2]{0,0}; //current grid square coordinate
 
     float m_tileSize=1.12f;
@@ -46,10 +47,10 @@ public class cursorscrip1:MonoBehaviour
         updatePosition();
         calcPos();
 
-        // if (Input.GetButtonDown("selectkey") && m_selectActive)
-        // {
-        //     selectRequest();
-        // }
+        if (Input.GetButtonDown("selectkey") && m_selectActive)
+        {
+            selectRequest();
+        }
     }
 
     void updatePosition()
