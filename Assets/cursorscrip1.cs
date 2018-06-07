@@ -11,15 +11,18 @@ public class cursorscrip1:MonoBehaviour
 
     public Transform m_gridthing; //the blue grid square, to be replaced!!!
 
+    public tilecontrol m_tilecontrol;
+
     /*-- movement vars --*/
     Vector3 m_moveVec=new Vector3();
     Vector3 m_posvec=new Vector3();
     float m_cursorspeed=7.6f;
 
     /*-- grid float vars, might deprecate later --*/
+    [NonSerialized]
     public Vector3 m_centrepos=new Vector3(); //current grid square coordiante's centre
     [NonSerialized]
-    public float[] m_pos=new float[2]{0,0}; //current grid square coordinate
+    public int[] m_pos=new int[2]{0,0}; //current grid square coordinate
 
     float m_tileSize=1.12f;
     float m_tileSizehalf;
@@ -47,9 +50,18 @@ public class cursorscrip1:MonoBehaviour
         updatePosition();
         calcPos();
 
-        if (Input.GetButtonDown("selectkey") && m_selectActive)
+        if (Input.GetButtonDown("selectkey"))
         {
-            selectRequest();
+            if (m_selectActive)
+            {
+                selectRequest();
+            }
+
+            int tileindex=m_pos[1]*m_tilecontrol.m_gridDim[0]+m_pos[1];
+            if (tileindex>=0 && tileindex<36)
+            {
+                print(m_tilecontrol.m_tiles[tileindex].m_tdata);
+            }
         }
     }
 
@@ -87,6 +99,7 @@ public class cursorscrip1:MonoBehaviour
             }
 
             m_gridthing.position=m_centrepos;
+            print(String.Format("{0},{1}",m_pos[0],m_pos[1]));
         }
 
         diff=transform.position.z-m_centrepos.z;
@@ -105,6 +118,7 @@ public class cursorscrip1:MonoBehaviour
             }
 
             m_gridthing.position=m_centrepos;
+            print(String.Format("{0},{1}",m_pos[0],m_pos[1]));
         }
     }
 

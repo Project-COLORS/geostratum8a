@@ -186,6 +186,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 341311987}
+  - component: {fileID: 341311988}
   m_Layer: 0
   m_Name: tilesystem
   m_TagString: Untagged
@@ -206,6 +207,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &341311988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 341311986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47c2a21427935094f8dbfdcb168f65e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_gridDim: 0600000006000000
 --- !u!1 &613098937
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,7 +287,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 613098937}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.010566673, y: 1.3300451, z: 0.00037145018}
+  m_LocalPosition: {x: -0.41, y: 1.3, z: -0.394}
   m_LocalScale: {x: 0.04701464, y: 0.049581274, z: 3.132967}
   m_Children: []
   m_Father: {fileID: 1686957877}
@@ -644,7 +657,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2131435567}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.08, y: 1.76, z: -0.019999998}
+  m_LocalPosition: {x: -3.47, y: 1.76, z: -3.05}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.49999997}
   m_Children: []
   m_Father: {fileID: 0}
@@ -664,7 +677,7 @@ MonoBehaviour:
   m_cam: {fileID: 1621618192}
   m_body: {fileID: 2131435571}
   m_gridthing: {fileID: 613098939}
-  m_centrepos: {x: 0, y: 0, z: 0}
+  m_tilecontrol: {fileID: 341311988}
 --- !u!54 &2131435571
 Rigidbody:
   m_ObjectHideFlags: 0

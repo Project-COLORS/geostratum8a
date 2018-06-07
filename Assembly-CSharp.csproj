@@ -53,6 +53,8 @@
   <ItemGroup>
      <Compile Include="Assets\basechar.cs" />
      <Compile Include="Assets\cursorscrip1.cs" />
+     <Compile Include="Assets\tile.cs" />
+     <Compile Include="Assets\tilecontrol.cs" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>C:/Users/khang/Desktop/geostratum8a/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>
