@@ -24,7 +24,6 @@ public class cursorscrip1:MonoBehaviour
     [NonSerialized]
     public int[] m_pos=new int[2]{0,0}; //current grid square coordinate
 
-    float m_tileSize=1.12f;
     float m_tileSizehalf;
 
     /*-- selection system --*/
@@ -33,7 +32,7 @@ public class cursorscrip1:MonoBehaviour
 
     void Start()
     {
-        m_tileSizehalf=m_tileSize/2;
+        m_tileSizehalf=m_tilecontrol.m_tileSize/2;
 
         m_centrepos.x=transform.position.x;
         m_centrepos.z=transform.position.z;
@@ -57,11 +56,12 @@ public class cursorscrip1:MonoBehaviour
                 selectRequest();
             }
 
-            int tileindex=m_pos[1]*m_tilecontrol.m_gridDim[0]+m_pos[1];
-            if (tileindex>=0 && tileindex<36)
-            {
-                print(m_tilecontrol.m_tiles[tileindex].m_tdata);
-            }
+            int tileindex=m_tilecontrol.coordsToIndex(m_pos[0],m_pos[1]);
+            print(tileindex);
+            // if (tileindex>=0 && tileindex<36)
+            // {
+
+            // }
         }
     }
 
@@ -86,19 +86,24 @@ public class cursorscrip1:MonoBehaviour
         float diff=transform.position.x-m_centrepos.x;
         if (Mathf.Abs(diff)>=m_tileSizehalf)
         {
+            //instead of recalculating pos, just increment or decrement
             if (diff>0)
             {
                 m_pos[0]+=1;
-                m_centrepos.x+=m_tileSize;
+                m_centrepos.x+=m_tilecontrol.m_tileSize;
             }
 
             else
             {
                 m_pos[0]-=1;
-                m_centrepos.x-=m_tileSize;
+                m_centrepos.x-=m_tilecontrol.m_tileSize;
             }
 
-            m_gridthing.position=m_centrepos;
+            if (m_tilecontrol.coordsToIndex(m_pos[0],m_pos[1])>=0)
+            {
+                m_gridthing.position=m_centrepos;
+            }
+
             print(String.Format("{0},{1}",m_pos[0],m_pos[1]));
         }
 
@@ -108,16 +113,20 @@ public class cursorscrip1:MonoBehaviour
             if (diff>0)
             {
                 m_pos[1]+=1;
-                m_centrepos.z+=m_tileSize;
+                m_centrepos.z+=m_tilecontrol.m_tileSize;
             }
 
             else
             {
                 m_pos[1]-=1;
-                m_centrepos.z-=m_tileSize;
+                m_centrepos.z-=m_tilecontrol.m_tileSize;
             }
 
-            m_gridthing.position=m_centrepos;
+            if (m_tilecontrol.coordsToIndex(m_pos[0],m_pos[1])>=0)
+            {
+                m_gridthing.position=m_centrepos;
+            }
+
             print(String.Format("{0},{1}",m_pos[0],m_pos[1]));
         }
     }

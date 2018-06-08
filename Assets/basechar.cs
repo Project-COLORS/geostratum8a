@@ -5,10 +5,15 @@ using UnityEngine;
 public class basechar:MonoBehaviour
 {
     cursorscrip1 m_cursor;
+    tilecontrol m_tilecontrol;
+
+    public int[] m_pos=new int[2];
 
     void Start()
     {
         m_cursor=GameObject.Find("cursor").GetComponent<cursorscrip1>();
+        m_tilecontrol=GameObject.Find("tilesystem").GetComponent<tilecontrol>();
+
         move();
     }
 
