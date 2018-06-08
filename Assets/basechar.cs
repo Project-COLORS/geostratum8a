@@ -24,7 +24,7 @@ public class basechar:MonoBehaviour
 
     void relocate()
     {
-        Vector3 newpos=new Vector3(m_cursor.m_centrepos.x,.64f,m_cursor.m_centrepos.z);
+        Vector3 newpos=new Vector3(m_cursor.m_selectedTile.m_centre[0],.64f,m_cursor.m_selectedTile.m_centre[1]);
 
         transform.position=newpos;
     }

@@ -218,7 +218,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c2a21427935094f8dbfdcb168f65e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_gridDim: 0600000006000000
+  m_gridDim: 0700000007000000
+  m_tileSize: 1.12
 --- !u!1 &613098937
 GameObject:
   m_ObjectHideFlags: 0
@@ -587,6 +588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f0fbece8a4ad4349ad10a679ed87585, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_pos: 0500000003000000
 --- !u!1 &2131435567
 GameObject:
   m_ObjectHideFlags: 0

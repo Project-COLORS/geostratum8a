@@ -29,6 +29,8 @@ public class cursorscrip1:MonoBehaviour
     /*-- selection system --*/
     bool m_selectActive=false;
     Action m_currentSelectCommand;
+    [NonSerialized]
+    public tile m_selectedTile;
 
     void Start()
     {
@@ -37,6 +39,9 @@ public class cursorscrip1:MonoBehaviour
         m_centrepos.x=transform.position.x;
         m_centrepos.z=transform.position.z;
         m_centrepos.y=m_gridthing.position.y;
+
+        m_tilecontrol.m_initialTilePos=new float[2]{m_centrepos[0],m_centrepos[2]};
+        m_tilecontrol.genGrid();
     }
 
     void Update()
@@ -55,13 +60,6 @@ public class cursorscrip1:MonoBehaviour
             {
                 selectRequest();
             }
-
-            int tileindex=m_tilecontrol.coordsToIndex(m_pos[0],m_pos[1]);
-            print(tileindex);
-            // if (tileindex>=0 && tileindex<36)
-            // {
-
-            // }
         }
     }
 
@@ -145,6 +143,13 @@ public class cursorscrip1:MonoBehaviour
         //once tile system is implemented, do checks to see if
         //the tile is actually selectable before activating the callback
 
+        int tileindex=m_tilecontrol.coordsToIndex(m_pos[0],m_pos[1]);
+        if (tileindex<0)
+        {
+            return;
+        }
+
+        m_selectedTile=m_tilecontrol.m_tiles[tileindex];
         m_currentSelectCommand();
         m_currentSelectCommand=null;
         m_selectActive=false;
