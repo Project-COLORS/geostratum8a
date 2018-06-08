@@ -1,4 +1,6 @@
-﻿public class tile
+﻿using UnityEngine;
+
+public class tile
 {
     public int m_elevation=0;
     public basechar m_occupyChar;
